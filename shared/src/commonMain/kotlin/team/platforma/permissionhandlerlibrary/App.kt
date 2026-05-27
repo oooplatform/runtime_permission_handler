@@ -89,8 +89,13 @@ fun App() {
                 PermissionHandler.requestMultiplySequential(
                     Permission.GeolocationOnAppUsing,
                     Permission.GeolocationAlways
-                ) { granted ->
-                    // ...resultMap for multiple queries
+                ) { grantedMap ->
+                    val backgroundGeolocation = grantedMap.all { (permission, granted) -> granted }
+                    if (backgroundGeolocation) {
+                        // Granted background geolocation start service
+                    } else {
+                        // Permission denied
+                    }
                 }
             }) {
                 Text("Geolocation always Sequential")
