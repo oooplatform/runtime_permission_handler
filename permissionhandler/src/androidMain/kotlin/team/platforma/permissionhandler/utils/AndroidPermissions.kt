@@ -1,6 +1,7 @@
 package team.platforma.permissionhandler.utils
 
 import team.platforma.permissionhandler.Permission
+import team.platforma.permissionhandler.access.BluetoothAccess
 import team.platforma.permissionhandler.access.CameraAccess
 import team.platforma.permissionhandler.access.GalleryAccess
 import team.platforma.permissionhandler.access.GeolocationAlwaysAccess
@@ -25,6 +26,7 @@ internal object AndroidPermissions {
             Permission.WriteContacts -> WriteContactsAccess
             Permission.ReadExternalStorage -> ReadExternalStorageAccess
             Permission.WriteExternalStorage -> WriteExternalStorageAccess
+            Permission.Bluetooth -> BluetoothAccess
         }
     }
 }

@@ -10,5 +10,7 @@
     <string>Microphone access</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Мы используем вашу геолокацию даже в фоне ...</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Приложению нужен Bluetooth для подключения к устройствам.</string>
 </dict>
 </plist>
