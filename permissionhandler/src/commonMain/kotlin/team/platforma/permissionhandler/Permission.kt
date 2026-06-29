@@ -39,6 +39,7 @@ sealed class Permission {
      * ```
      */
     data object Camera : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -53,6 +54,7 @@ sealed class Permission {
      * ```
      */
     data object Gallery : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -65,6 +67,7 @@ sealed class Permission {
      * ```
      */
     data object Microphone : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -72,6 +75,7 @@ sealed class Permission {
      * ```
      */
     data object PostNotifications : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -85,6 +89,7 @@ sealed class Permission {
      * ```
      */
     data object GeolocationOnAppUsing : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -100,7 +105,8 @@ sealed class Permission {
      * <string>Geolocation background access</string>
      * ```
      */
-    data object GeolocationAlways: Permission()
+    data object GeolocationAlways : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -113,6 +119,7 @@ sealed class Permission {
      * ```
      */
     data object ReadContacts : Permission()
+
     /**
      * Android Manifest
      * ```
@@ -125,20 +132,39 @@ sealed class Permission {
      * ```
      */
     data object WriteContacts : Permission()
+
     /**
      * Android Manifest
      * ```
      *    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
      * ```
      */
-    data object ReadExternalStorage: Permission()
+    data object ReadExternalStorage : Permission()
+
     /**
      * Android Manifest
      * ```
      *    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
      * ```
      */
-    data object WriteExternalStorage: Permission()
+    data object WriteExternalStorage : Permission()
 
+    /**
+     * Android Manifest
+     * ```
+     *     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+     *     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+     *     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" android:maxSdkVersion="32" />
+     *     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" android:maxSdkVersion="32" />
+     *     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:maxSdkVersion="32" />
+     * ```
+     *
+     * iOS Info.plist
+     * ```
+     * <key>NSBluetoothAlwaysUsageDescription</key>
+     * <string>Приложению нужен Bluetooth для поиска и подключения к устройствам.</string>
+     * ```
+     */
+    data object Bluetooth : Permission()
 
 }

@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-
 import team.platforma.permissionhandler.Permission
 import team.platforma.permissionhandler.PermissionHandler
 
@@ -21,11 +21,11 @@ fun App() {
     MaterialTheme {
 
         LaunchedEffect(Unit) {
-            PermissionHandler.requestSingle(
-                Permission.GeolocationOnAppUsing
-            ) { granted ->
-                //... result for Geolocation on app using access granted or not granted
-            }
+//            PermissionHandler.requestSingle(
+//                Permission.GeolocationOnAppUsing
+//            ) { granted ->
+//                //... result for Geolocation on app using access granted or not granted
+//            }
         }
 
         Column(
@@ -145,6 +145,12 @@ fun App() {
                 Text("Multiple request")
             }
 
+            Button(onClick = {
+                PermissionHandler.requestSingle(Permission.Bluetooth){
+                }
+            }) {
+                Text("Bluetooth")
+            }
         }
     }
 }

@@ -11,7 +11,6 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_11
     }
-
 }
 dependencies {
     implementation(libs.compose.runtime)
