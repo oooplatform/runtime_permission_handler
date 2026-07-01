@@ -41,18 +41,20 @@ dependencies {
 ```
 <h4>Supported Permissions</h4>
 <table> 
-  <thead> <tr> <th>Permission</th> <th>Android</th> <th>iOS</th> </tr></thead> 
+  <thead> <tr> <th>Permission</th> <th>Android</th> <th>iOS</th> </tr> </thead> 
   <tbody> 
     <tr> <td>Camera</td> <td>✅</td> <td>✅</td> </tr> 
-    <tr> <td>Gallery</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>Microphone</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>PostNotifications</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>GeolocationOnAppUsing</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>GeolocationAlways</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>ReadContacts</td> <td>✅</td> <td>✅</td> 
-    </tr> <tr> <td>WriteContacts</td> <td>✅</td> <td>✅</td> </tr> 
-    </tr> <tr> <td>ReadExternalStorage</td> <td>✅</td> <td>✅</td> </tr> 
-  </tr> <tr> <td>WriteExternalStorage</td> <td>✅</td> <td>✅</td> </tr> 
+    <tr> <td>Gallery</td> <td>✅</td> <td>✅</td></tr> 
+    <tr> <td>Microphone</td> <td>✅</td> <td>✅</td> </tr> 
+    <tr> <td>PostNotifications</td> <td>✅</td> <td>✅</td> </tr>  
+    <tr> <td>GeolocationOnAppUsing</td> <td>✅</td> <td>✅</td> </tr>
+    <tr> <td>GeolocationAlways</td> <td>✅</td> <td>✅</td></tr> 
+    <tr> <td>ReadContacts</td> <td>✅</td> <td>✅</td> </tr>
+    <tr> <td>WriteContacts</td> <td>✅</td> <td>✅</td> </tr>
+    <tr> <td>ReadExternalStorage</td> <td>✅</td> <td>✅</td> </tr> 
+    <tr> <td>WriteExternalStorage</td> <td>✅</td> <td>✅</td> </tr>
+    <tr> <td>WriteExternalStorage</td> <td>✅</td> <td>✅</td> </tr> 
+    <tr> <td>Bluetooth</td> <td>✅</td> <td>✅</td> </tr> 
   </tbody> 
 </table>
 

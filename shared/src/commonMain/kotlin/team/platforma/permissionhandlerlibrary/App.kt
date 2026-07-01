@@ -68,7 +68,7 @@ fun App() {
 
             Button(onClick = {
                 PermissionHandler.requestSingle(
-                    Permission.GeolocationOnAppUsing
+                    Permission.GeolocationApp
                 ) { granted ->
                     println("PERM_LOG Permission.GeolocationOnAppUsing $granted")
                 }
@@ -77,7 +77,7 @@ fun App() {
             }
             Button(onClick = {
                 PermissionHandler.requestSingle(
-                    Permission.GeolocationAlways
+                    Permission.GeolocationBackground
                 ) { always ->
                     println("PERM_LOG Permission.GeolocationAlways $always")
                 }
@@ -87,8 +87,8 @@ fun App() {
 
             Button(onClick = {
                 PermissionHandler.requestMultiplySequential(
-                    Permission.GeolocationOnAppUsing,
-                    Permission.GeolocationAlways
+                    Permission.GeolocationApp,
+                    Permission.GeolocationBackground
                 ) { grantedMap ->
                     val backgroundGeolocation = grantedMap.all { (permission, granted) -> granted }
                     if (backgroundGeolocation) {
@@ -103,23 +103,23 @@ fun App() {
 
             Button(onClick = {
                 PermissionHandler.requestSingle(
-                    Permission.ReadContacts
+                    Permission.Contacts
                 ) { granted ->
-                    println("PERM_LOG Permission.ReadContacts $granted")
+                    println("PERM_LOG Permission.Contacts $granted")
                 }
             }) {
                 Text("ReadContacts")
             }
 
-            Button(onClick = {
-                PermissionHandler.requestSingle(
-                    Permission.WriteContacts
-                ) { granted ->
-                    println("PERM_LOG Permission.WriteContacts $granted")
-                }
-            }) {
-                Text("WriteContacts")
-            }
+//            Button(onClick = {
+//                PermissionHandler.requestSingle(
+//                    Permission.WriteContacts
+//                ) { granted ->
+//                    println("PERM_LOG Permission.WriteContacts $granted")
+//                }
+//            }) {
+//                Text("WriteContacts")
+//            }
 
             Button(onClick = {
                 PermissionHandler.requestSingle(
@@ -133,20 +133,29 @@ fun App() {
 
             Button(onClick = {
                 PermissionHandler.requestMultiply(
+                    Permission.Bluetooth,
                     Permission.Camera,
                     Permission.Gallery,
                     Permission.Microphone,
                     Permission.PostNotifications,
-                    Permission.ReadContacts
+                    Permission.GeolocationApp,
+                    Permission.Contacts
                 ) { result ->
-                    // ...resultMap for multiple queries
+                    println("PERM_LOG Multiply :")
+                    result.forEach { (key, value) ->
+                        println("$key $value")
+                    }
+
                 }
             }) {
                 Text("Multiple request")
             }
 
             Button(onClick = {
-                PermissionHandler.requestSingle(Permission.Bluetooth){
+                PermissionHandler.requestSingle(
+                    Permission.Bluetooth
+                ) { granted ->
+                    println("PERM_LOG Permission.Bluetooth $granted")
                 }
             }) {
                 Text("Bluetooth")

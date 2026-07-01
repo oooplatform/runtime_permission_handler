@@ -109,8 +109,8 @@ expect object PermissionHandler {
      * Use this function to request multiple permissions in the order passed to the function.
      * ``` kotlin
      *                 PermissionHandler.requestMultiplySequential(
-     *                     Permission.GeolocationOnAppUsing,
-     *                     Permission.GeolocationAlways
+     *                     Permission.GeolocationApp,
+     *                     Permission.GeolocationBackground
      *                 ) { granted ->
      *                     // ...resultMap for multiple queries
      *                 }
@@ -126,8 +126,8 @@ expect object PermissionHandler {
      * Use this function to request multiple permissions in the order passed to the function.
      * ``` kotlin
      *                 PermissionHandler.requestMultiplySequential(
-     *                     Permission.GeolocationOnAppUsing,
-     *                     Permission.GeolocationAlways
+     *                     Permission.GeolocationApp,
+     *                     Permission.GeolocationBackground
      *                 ) { granted ->
      *                     // ...resultMap for multiple queries
      *                 }

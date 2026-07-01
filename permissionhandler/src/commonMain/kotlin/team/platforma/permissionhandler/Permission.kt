@@ -11,17 +11,17 @@ package team.platforma.permissionhandler
  *
  * [PostNotifications]
  *
- * [GeolocationOnAppUsing]
+ * [GeolocationApp]
  *
- * [GeolocationAlways]
+ * [GeolocationBackground]
  *
- * [ReadContacts]
- *
- * [WriteContacts]
+ * [Contacts]
  *
  * [ReadExternalStorage]
  *
  * [WriteExternalStorage]
+ *
+ * [Bluetooth]
  */
 sealed class Permission {
     /**
@@ -88,7 +88,7 @@ sealed class Permission {
      * <string>Geolocation on app using access</string>
      * ```
      */
-    data object GeolocationOnAppUsing : Permission()
+    data object GeolocationApp : Permission()
 
     /**
      * Android Manifest
@@ -105,24 +105,12 @@ sealed class Permission {
      * <string>Geolocation background access</string>
      * ```
      */
-    data object GeolocationAlways : Permission()
+    data object GeolocationBackground : Permission()
 
     /**
      * Android Manifest
      * ```
      *    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-     * ```
-     * iOS Info.plist
-     * ```
-     * <key>NSContactsUsageDescription</key>
-     * <string>Phone contacts access</string>
-     * ```
-     */
-    data object ReadContacts : Permission()
-
-    /**
-     * Android Manifest
-     * ```
      *    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
      * ```
      * iOS Info.plist
@@ -131,7 +119,20 @@ sealed class Permission {
      * <string>Phone contacts access</string>
      * ```
      */
-    data object WriteContacts : Permission()
+    data object Contacts : Permission()
+
+//    /**
+//     * Android Manifest
+//     * ```
+//     *    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+//     * ```
+//     * iOS Info.plist
+//     * ```
+//     * <key>NSContactsUsageDescription</key>
+//     * <string>Phone contacts access</string>
+//     * ```
+//     */
+//    data object WriteContacts : Permission()
 
     /**
      * Android Manifest
