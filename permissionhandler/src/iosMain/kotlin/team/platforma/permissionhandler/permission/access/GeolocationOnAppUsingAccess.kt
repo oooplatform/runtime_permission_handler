@@ -38,10 +38,12 @@ internal class GeolocationOnAppUsingAccess(perm: Permission) : PermissionRequest
             kCLAuthorizationStatusNotDetermined -> {
                 delegate = LocationDelegate()
                 locationManager.delegate = delegate
+
                 delegate?.onResult { granted ->
                     delegate = null
                     result(permission, granted)
                 }
+
                 dispatch_async(dispatch_get_main_queue()) {
                     locationManager.requestWhenInUseAuthorization()
                 }
