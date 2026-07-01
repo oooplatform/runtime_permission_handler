@@ -5,15 +5,16 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
 
-    id("maven-publish")
-    id("signing")
+//    id("maven-publish")
+//    id("signing")
 
+    alias(libs.plugins.mavenPublish)
     // (ОПЦИОНАЛЬНО, но рекомендуется)
     // id("org.jetbrains.dokka") version "1.9.20"
 }
 
 group = "io.github.smirnovdv-98"
-version = "1.0.0"
+version = "1.0.1"
 
 kotlin {
 
@@ -62,75 +63,117 @@ android {
     }
 }
 
-publishing {
 
-    publications {
-//        withType<MavenPublication>().configureEach {
-//            signing.sign(this)
-//        }
-        withType<MavenPublication>().configureEach {
+mavenPublishing {
+    publishToMavenCentral()
 
-            // ====================================================
-            // CHANGE #1: НЕ трогаем artifactId вручную
-            // ====================================================
-            // Kotlin MPP сам создаёт корректные artifactId
-            // (android, ios, metadata)
-            //
-            // ❌ УБРАНО:
-            // artifactId = "..."
+    signAllPublications()
 
-            pom {
+    coordinates(
+        groupId = group.toString(),
+        artifactId = "permission-handler",
+        version = version.toString()
+    )
 
-                name.set("Permission Handler")
-                description.set("Kotlin Multiplatform permissions library")
-                url.set("https://github.com/oooplatform/runtime_permission_handler")
+    pom {
+        name.set("Permission Handler")
+        description.set("PermissionHandler")
+        inceptionYear.set("2026")
+        url.set("https://github.com/oooplatform/runtime_permission_handler")
 
-                licenses {
-                    license {
-                        name.set("MIT License")
-                        url.set("https://opensource.org/license/mit/")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("oooplatform")
-
-                        // CHANGE #2:
-                        // оставляем реальные значения только через properties
-                        name.set(project.findProperty("USER_NAME") as String? ?: "")
-                        email.set(project.findProperty("USER_EMAIL") as String? ?: "")
-                    }
-                }
-
-                scm {
-                    connection.set(
-                        "scm:git:git://github.com/oooplatform/runtime_permission_handler.git"
-                    )
-                    developerConnection.set(
-                        "scm:git:ssh://github.com/oooplatform/runtime_permission_handler.git"
-                    )
-                    url.set("https://github.com/oooplatform/runtime_permission_handler")
-                }
+        licenses {
+            license {
+                name.set("MIT License")
+                url.set("https://opensource.org/license/mit")
             }
         }
-    }
 
-    repositories {
-        maven {
-            name = "local"
-            url = uri("$rootDir/libs/maven-repo")
+        developers {
+            developer {
+                id.set("oooplatform")
+                name.set("smirnovdv98")
+            }
+        }
+
+        scm {
+            url.set("https://github.com/oooplatform/runtime_permission_handler")
+            connection.set("scm:git:git://github.com/oooplatform/runtime_permission_handler.git")
+            developerConnection.set("scm:git:ssh://github.com/oooplatform/runtime_permission_handler.git")
         }
     }
 }
-signing {
-    useGpgCmd()
-}
-afterEvaluate {
-    publishing.publications.withType<MavenPublication>().all {
-        signing.sign(this)
-    }
-}
+
+
+
+//publishing {
+//
+//    publications {
+////        withType<MavenPublication>().configureEach {
+////            signing.sign(this)
+////        }
+//        withType<MavenPublication>().configureEach {
+//
+//            // ====================================================
+//            // CHANGE #1: НЕ трогаем artifactId вручную
+//            // ====================================================
+//            // Kotlin MPP сам создаёт корректные artifactId
+//            // (android, ios, metadata)
+//            //
+//            // ❌ УБРАНО:
+//            // artifactId = "..."
+//
+//            pom {
+//
+//                name.set("Permission Handler")
+//                description.set("Kotlin Multiplatform permissions library")
+//                url.set("https://github.com/oooplatform/runtime_permission_handler")
+//
+//                licenses {
+//                    license {
+//                        name.set("MIT License")
+//                        url.set("https://opensource.org/license/mit/")
+//                    }
+//                }
+//
+//                developers {
+//                    developer {
+//                        id.set("oooplatform")
+//
+//                        // CHANGE #2:
+//                        // оставляем реальные значения только через properties
+//                        name.set(project.findProperty("USER_NAME") as String? ?: "")
+//                        email.set(project.findProperty("USER_EMAIL") as String? ?: "")
+//                    }
+//                }
+//
+//                scm {
+//                    connection.set(
+//                        "scm:git:git://github.com/oooplatform/runtime_permission_handler.git"
+//                    )
+//                    developerConnection.set(
+//                        "scm:git:ssh://github.com/oooplatform/runtime_permission_handler.git"
+//                    )
+//                    url.set("https://github.com/oooplatform/runtime_permission_handler")
+//                }
+//            }
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            name = "local"
+//            url = uri("$rootDir/libs/maven-repo")
+//        }
+//    }
+//}
+//signing {
+//    useGpgCmd()
+//}
+//afterEvaluate {
+//    publishing.publications.withType<MavenPublication>().all {
+//        signing.sign(this)
+//    }
+//}
 //signing {
 //
 //    useGpgCmd()
