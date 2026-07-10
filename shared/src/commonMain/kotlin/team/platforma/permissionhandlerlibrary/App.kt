@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import team.platforma.permissionhandler.Permission
 import team.platforma.permissionhandler.PermissionHandler
+import team.platforma.permissionhandler.Permission.Calendar.*
 
 @Composable
 @Preview
@@ -40,7 +41,7 @@ fun App() {
                     PermissionHandler.requestSingle(
                         Permission.Camera
                     ) { granted ->
-                        //... result for Camera access granted or not granted
+                        println("PERM_LOG Camera $granted")
                     }
                 }
             ) {
@@ -143,7 +144,7 @@ fun App() {
                 ) { result ->
                     println("PERM_LOG Multiply :")
                     result.forEach { (key, value) ->
-                        println("$key $value")
+                        println("PERM_LOG $key $value")
                     }
 
                 }
@@ -160,6 +161,73 @@ fun App() {
             }) {
                 Text("Bluetooth")
             }
+
+            Button(onClick = {
+                PermissionHandler.requestSingle(
+                    Permission.Calendar(Access.WriteOnly)
+                ) { granted ->
+                    println("PERM_LOG Calendar.WriteOnly $granted")
+                }
+            }) {
+                Text("Calendar.WriteOnly")
+            }
+
+            Button(onClick = {
+                PermissionHandler.requestSingle(
+                    Permission.Calendar(Access.Full)
+                ) { granted ->
+                    println("PERM_LOG Calendar.Full $granted")
+                }
+            }) {
+                Text("Calendar.Full")
+            }
+
+            Button(onClick = {
+                PermissionHandler.requestSingle(
+                    Permission.ExternalStorage(
+                        status = true,
+                        access = Permission.ExternalStorage.Access.Read
+                    )
+                ) { granted ->
+                    println("PERM_LOG ExternalStorage.Read $granted")
+                }
+            }) {
+                Text("ExternalStorage.Read")
+            }
+            Button(onClick = {
+                PermissionHandler.requestSingle(
+                    Permission.ExternalStorage(
+                        status = true,
+                        access = Permission.ExternalStorage.Access.Write
+                    )
+                ) { granted ->
+                    println("PERM_LOG ExternalStorage.Write $granted")
+                }
+            }) {
+                Text("ExternalStorage.Write")
+            }
+            Button(onClick = {
+                PermissionHandler.requestSingle(
+                    Permission.ExternalStorage(
+                        status = true,
+                        access = Permission.ExternalStorage.Access.Full
+                    )
+                ) { granted ->
+                    println("PERM_LOG ExternalStorage.Full $granted")
+                }
+            }) {
+                Text("ExternalStorage.Full")
+            }
+
+//            Button(onClick = {
+//                PermissionHandler.requestSingle(
+//                    Permission.WriteExternalStorage(false)
+//                ) { granted ->
+//                    println("PERM_LOG WriteExternalStorage $granted")
+//                }
+//            }) {
+//                Text("WriteExternalStorage")
+//            }
         }
     }
 }

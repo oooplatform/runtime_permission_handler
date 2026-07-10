@@ -2,6 +2,7 @@ package team.platforma.permissionhandler.utils
 
 import team.platforma.permissionhandler.Permission
 import team.platforma.permissionhandler.access.BluetoothAccess
+import team.platforma.permissionhandler.access.Calendar
 import team.platforma.permissionhandler.access.CameraAccess
 import team.platforma.permissionhandler.access.GalleryAccess
 import team.platforma.permissionhandler.access.GeolocationAlwaysAccess
@@ -9,8 +10,9 @@ import team.platforma.permissionhandler.access.GeolocationOnAppUsingAccess
 import team.platforma.permissionhandler.access.MicrophoneAccess
 import team.platforma.permissionhandler.access.PostNotificationAccess
 import team.platforma.permissionhandler.access.ContactsAccess
-import team.platforma.permissionhandler.access.ReadExternalStorageAccess
-import team.platforma.permissionhandler.access.WriteExternalStorageAccess
+import team.platforma.permissionhandler.access.ExternalStorage
+//import team.platforma.permissionhandler.access.ReadExternalStorageAccess
+//import team.platforma.permissionhandler.access.WriteExternalStorageAccess
 
 internal object AndroidPermissions {
     fun extract(permission: Permission): Array<String> {
@@ -22,9 +24,10 @@ internal object AndroidPermissions {
             Permission.GeolocationApp -> GeolocationOnAppUsingAccess
             Permission.GeolocationBackground -> GeolocationAlwaysAccess
             Permission.Contacts -> ContactsAccess
-            Permission.ReadExternalStorage -> ReadExternalStorageAccess
-            Permission.WriteExternalStorage -> WriteExternalStorageAccess
+            is Permission.ExternalStorage -> ExternalStorage(permission).request()
+//            is Permission.WriteExternalStorage -> WriteExternalStorageAccess
             Permission.Bluetooth -> BluetoothAccess
+            is Permission.Calendar -> Calendar(permission).request()
         }
     }
 }

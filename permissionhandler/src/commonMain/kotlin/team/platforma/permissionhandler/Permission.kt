@@ -17,11 +17,13 @@ package team.platforma.permissionhandler
  *
  * [Contacts]
  *
- * [ReadExternalStorage]
+ * [ExternalStorage]
  *
  * [WriteExternalStorage]
  *
  * [Bluetooth]
+ *
+ * [Calendar]
  */
 sealed class Permission {
     /**
@@ -138,17 +140,29 @@ sealed class Permission {
      * Android Manifest
      * ```
      *    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-     * ```
-     */
-    data object ReadExternalStorage : Permission()
-
-    /**
-     * Android Manifest
-     * ```
      *    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
      * ```
      */
-    data object WriteExternalStorage : Permission()
+    data class ExternalStorage(
+        override val status: Boolean = false,
+        val access: Access = Access.Full
+    ) : Permission(), AccessPlaceholder {
+        enum class Access {
+            Full,
+            Write,
+            Read
+        }
+    }
+
+//    /**
+//     * Android Manifest
+//     * ```
+//     *    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+//     * ```
+//     */
+//    data class WriteExternalStorage(
+//        override val status: Boolean = false
+//    ) : Permission(), AccessPlaceholder
 
     /**
      * Android Manifest
@@ -167,5 +181,17 @@ sealed class Permission {
      * ```
      */
     data object Bluetooth : Permission()
+
+    /**
+     *
+     */
+    data class Calendar(
+        val access: Access = Access.Full
+    ): Permission() {
+        enum class Access {
+            Full,
+            WriteOnly
+        }
+    }
 
 }
